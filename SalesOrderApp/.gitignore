@@ -1,0 +1,16 @@
+## User file extensions
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+bbin/
+obj/
+
+## Visual Studio Visual State Folder
+.vs/

@@ -1,0 +1,21 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SalesOrderApp.Domain.Entities
+{
+    public class SalesOrderDetail
+    {
+        [Key] 
+        public int OrderDetailID { get; set; }
+
+        public int OrderID { get; set; }
+        public string ItemCode { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string? Note { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public decimal TaxRate { get; set; }
+        public decimal ExclAmount { get; set; }
+        public decimal TaxAmount { get; set; }
+        public decimal InclAmount { get; set; }
+    }
+}
