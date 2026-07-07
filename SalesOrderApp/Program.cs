@@ -1,7 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SalesOrderApp.Infrastructure.Data;
-
+using SalesOrderApp;
 var builder = WebApplication.CreateBuilder(args);
+
+// Repository, AutoMapper 
+builder.Services.AddScoped<SalesOrderApp.Application.Interfaces.ISalesOrderRepository, SalesOrderApp.Infrastructure.Data.Repositories.SalesOrderRepository>();
+builder.Services.AddAutoMapper(typeof(SalesOrderApp.MappingProfile));
 
 // Add DB Context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
