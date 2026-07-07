@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using SalesOrderApp.Application.Interfaces;
 using SalesOrderApp.Domain.Entities;
 using SalesOrderApp.Infrastructure.Data;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SalesOrderApp.Infrastructure.Data.Repositories
 {
@@ -18,11 +20,17 @@ namespace SalesOrderApp.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<Item>> GetItemsAsync() => await _context.Item.ToListAsync();
 
-        public async Task<IEnumerable<SalesOrder>> GetOrdersAsync() => 
-            await _context.SalesOrder.Include(o => o.OrderDetails).ToListAsync();
+         public async Task<IEnumerable<SalesOrder>> GetOrdersAsync() => 
+            await _context.SalesOrder
+                .Include(o => o.Client) 
+                .Include(o => o.OrderDetails)
+                .ToListAsync();
 
         public async Task<SalesOrder?> GetOrderByIdAsync(int id) => 
-            await _context.SalesOrder.Include(o => o.OrderDetails).FirstOrDefaultAsync(o => o.OrderID == id);
+            await _context.SalesOrder
+                .Include(o => o.Client)
+                .Include(o => o.OrderDetails)
+                .FirstOrDefaultAsync(o => o.OrderID == id);
 
         public async Task<SalesOrder> CreateOrderAsync(SalesOrder order)
         {

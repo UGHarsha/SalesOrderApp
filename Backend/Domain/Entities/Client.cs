@@ -1,7 +1,10 @@
-﻿namespace SalesOrderApp.Domain.Entities
+using System.ComponentModel.DataAnnotations;
+
+namespace SalesOrderApp.Domain.Entities
 {
     public class Client
     {
+        [Key]
         public int ClientID { get; set; }
         public string CustomerName { get; set; } = string.Empty;
         public string? Address1 { get; set; }
