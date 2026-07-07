@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOrders } from '../redux/slices/orderSlice';
+import { fetchClients } from '../redux/slices/masterDataSlice';
 import Button from '../components/Button';
 import Table from '../components/Table';
 
@@ -9,9 +10,11 @@ const SalesOrderListScreen = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { orders, loading, error } = useSelector((state) => state.sales);
+    const { clients } = useSelector((state) => state.masterData);
 
     useEffect(() => {
         dispatch(fetchOrders());
+        dispatch(fetchClients());
     }, [dispatch]);
 
     const columns = [
@@ -25,7 +28,11 @@ const SalesOrderListScreen = () => {
         { 
             header: 'Customer Name', 
             accessor: 'customerName',
-            render: (row) => row.customerName ? `${row.customerName} (ID: ${row.clientID})` : `Client ID: ${row.clientID}`
+            render: (row) => {
+                const client = clients?.find(c => c.clientID === row.clientID);
+                const name = client ? client.customerName : row.customerName;
+                return name ? `${name} (ID: ${row.clientID})` : `Client ID: ${row.clientID}`;
+            }
         },
         { 
             header: 'Reference No', 

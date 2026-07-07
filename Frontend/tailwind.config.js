@@ -8,18 +8,18 @@ export default {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: '#0f172a', // slate-900
-                    hover: '#334155',   // slate-700
-                    light: '#cbd5e1',   // slate-300
+                    DEFAULT: '#0f172a',
+                    hover: '#334155',
+                    light: '#cbd5e1',
                 },
                 secondary: {
-                    DEFAULT: '#f8fafc', // slate-50
-                    hover: '#f1f5f9',   // slate-100
-                    border: '#94a3b8',  // slate-400
+                    DEFAULT: '#f8fafc',
+                    hover: '#f1f5f9',
+                    border: '#94a3b8',
                 },
                 danger: {
-                    DEFAULT: '#ef4444', // red-500
-                    hover: '#dc2626',   // red-600
+                    DEFAULT: '#ef4444',
+                    hover: '#dc2626',
                 },
                 surface: '#ffffff',
                 background: '#f8fafc',
